@@ -1,5 +1,6 @@
 import { BurgerIngredientType } from "../../types/burger_ingredient_types";
 import { BurgerIngredient } from "./burger_ingredient/burger_ingredient";
+import "./burger.css";
 
 export const Burger = () => {
   return (

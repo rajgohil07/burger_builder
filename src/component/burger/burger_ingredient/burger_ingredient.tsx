@@ -1,5 +1,6 @@
 import { BurgerIngredientType } from "../../../types/burger_ingredient_types";
 import PropTypes from "prop-types";
+import "./burger_ingredient.css";
 
 export const BurgerIngredient = ({
   types,

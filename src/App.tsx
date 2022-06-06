@@ -5,7 +5,7 @@ const App = () => {
   return (
     <>
       <Layout>
-        <BurgerBuilder></BurgerBuilder>
+        <BurgerBuilder />
       </Layout>
     </>
   );
