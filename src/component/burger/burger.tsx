@@ -7,8 +7,6 @@ import {
 } from "../../types/burger_option_types";
 
 export const Burger = ({ burgerOption }: { burgerOption: any }) => {
-  //   console.log("burgerOption :>> ", burgerOption);
-  //   console.log("burgerOption object:>> ", Object.keys(burgerOption));
   const burgerData: any = Object.keys(burgerOption).map((keyName: any) =>
     [...Array(burgerOption[keyName])].map((_, index) => {
       let burgerOptionData;
@@ -37,7 +35,7 @@ export const Burger = ({ burgerOption }: { burgerOption: any }) => {
             />
           );
           break;
-        case "Bacon":
+        case "bacon":
           burgerOptionData = (
             <BurgerIngredient
               key={index + keyName}
