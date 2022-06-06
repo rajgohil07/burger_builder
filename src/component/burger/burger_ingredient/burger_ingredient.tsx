@@ -1,18 +1,21 @@
-import { BurgerIngredientType } from "../../../types/burger_ingredient_types";
 import PropTypes from "prop-types";
 import "./burger_ingredient.css";
+import {
+  IBurgerIngredientType,
+  BurgerIngredientTypeEnum,
+} from "../../../types/burger_ingredient_types";
 
 export const BurgerIngredient = ({
   types,
 }: {
-  types: BurgerIngredientType;
+  types: IBurgerIngredientType;
 }) => {
   let ingredient;
   switch (types) {
-    case BurgerIngredientType.BreadBottom:
+    case BurgerIngredientTypeEnum.BreadBottom:
       ingredient = <div className="BreadBottom"></div>;
       break;
-    case BurgerIngredientType.BreadTop:
+    case BurgerIngredientTypeEnum.BreadTop:
       ingredient = (
         <div className="BreadTop">
           <div className="Seeds1"></div>
@@ -20,16 +23,16 @@ export const BurgerIngredient = ({
         </div>
       );
       break;
-    case BurgerIngredientType.Meat:
+    case BurgerIngredientTypeEnum.Meat:
       ingredient = <div className="Meat"></div>;
       break;
-    case BurgerIngredientType.Cheese:
+    case BurgerIngredientTypeEnum.Cheese:
       ingredient = <div className="Cheese"></div>;
       break;
-    case BurgerIngredientType.Salad:
+    case BurgerIngredientTypeEnum.Salad:
       ingredient = <div className="Salad"></div>;
       break;
-    case BurgerIngredientType.Bacon:
+    case BurgerIngredientTypeEnum.Bacon:
       ingredient = <div className="Bacon"></div>;
       break;
     default:
@@ -39,7 +42,12 @@ export const BurgerIngredient = ({
 };
 
 BurgerIngredient.propType = {
-  types: PropTypes.oneOf(
-    Object.values(BurgerIngredientType) as BurgerIngredientType[]
-  ),
+  types: PropTypes.oneOf([
+    BurgerIngredientTypeEnum.Bacon |
+      BurgerIngredientTypeEnum.BreadBottom |
+      BurgerIngredientTypeEnum.BreadTop |
+      BurgerIngredientTypeEnum.Cheese |
+      BurgerIngredientTypeEnum.Meat |
+      BurgerIngredientTypeEnum.Salad,
+  ]),
 };
