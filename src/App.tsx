@@ -1,5 +1,14 @@
+import { Layout } from "./component/layout/layout";
+import { Burger } from "./container/burger/burger";
+
 const App = () => {
-  return <div>Hello World!</div>;
+  return (
+    <>
+      <Layout>
+        <Burger></Burger>
+      </Layout>
+    </>
+  );
 };
 
 export default App;
