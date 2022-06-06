@@ -8,6 +8,7 @@ export const Burger = () => {
       <BurgerIngredient types={BurgerIngredientType.BreadTop} />
       <BurgerIngredient types={BurgerIngredientType.Cheese} />
       <BurgerIngredient types={BurgerIngredientType.Bacon} />
+      <BurgerIngredient types={BurgerIngredientType.Meat} />
       <BurgerIngredient types={BurgerIngredientType.BreadBottom} />
     </div>
   );
