@@ -34,7 +34,7 @@ export const BurgerIngredient = ({
     default:
       break;
   }
-  return ingredient;
+  return <>{ingredient}</>;
 };
 
 BurgerIngredient.propType = {

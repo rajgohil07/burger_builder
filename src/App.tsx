@@ -1,11 +1,11 @@
 import { Layout } from "./component/layout/layout";
-import { Burger } from "./container/burger/burger";
+import { BurgerBuilder } from "./container/burger_builder/burger_builder";
 
 const App = () => {
   return (
     <>
       <Layout>
-        <Burger></Burger>
+        <BurgerBuilder></BurgerBuilder>
       </Layout>
     </>
   );
