@@ -1,4 +1,5 @@
 import { BurgerIngredientType } from "../../../types/burger_ingredient_types";
+import PropTypes from "prop-types";
 
 export const BurgerIngredient = ({
   types,
@@ -34,4 +35,10 @@ export const BurgerIngredient = ({
       break;
   }
   return ingredient;
+};
+
+BurgerIngredient.propType = {
+  types: PropTypes.oneOf(
+    Object.values(BurgerIngredientType) as BurgerIngredientType[]
+  ),
 };
