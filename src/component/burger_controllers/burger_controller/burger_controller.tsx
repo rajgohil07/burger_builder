@@ -2,7 +2,7 @@ import "./burger_controller.css";
 
 export const BurgerController = ({ name }: { name: string }) => {
   return (
-    <div>
+    <div className="BuildControl">
       <label className="Label" htmlFor="">
         {name}
       </label>

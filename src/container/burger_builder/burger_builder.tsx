@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import { Burger } from "../../component/burger/burger";
+import { BurgerControllers } from "../../component/burger_controllers/burger_controllers";
 import { IBurgerOptionType } from "../../types/burger_option_types";
 
 export const BurgerBuilder = () => {
@@ -28,6 +29,7 @@ export const BurgerBuilder = () => {
   return (
     <>
       <Burger burgerOption={burgerOption} />
+      <BurgerControllers />
     </>
   );
 };
