@@ -8,6 +8,7 @@ import {
   BurgerIngredientTypeEnum,
   IBurgerIngredientType,
 } from "../../types/burger_ingredient_types";
+import { defaultIngredientsPrice } from "../../constants/constants";
 
 export const BurgerBuilder = () => {
   // set burger option state
@@ -24,6 +25,7 @@ export const BurgerBuilder = () => {
     meat: getMeat,
   };
 
+  // update the ingredients
   const updateIngredients = (
     addOrRemoveType: IAddOrRemoveIngredientType,
     ingredientType: IBurgerIngredientType
@@ -47,13 +49,24 @@ export const BurgerBuilder = () => {
     }
   };
 
+  // update the total amount of burger
+  const updateBurgerAmount = () => {
+    const newPrice: number =
+      getCheese * defaultIngredientsPrice.Cheese +
+      getSalad * defaultIngredientsPrice.Salad +
+      getBacon * defaultIngredientsPrice.Bacon +
+      getMeat * defaultIngredientsPrice.Meat;
+    setPrice(newPrice);
+  };
+
   useEffect(() => {
     burgerOption.cheese = getCheese;
     burgerOption.bacon = getBacon;
     burgerOption.salad = getSalad;
     burgerOption.meat = getMeat;
+    updateBurgerAmount();
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [getCheese, getSalad, getBacon, getMeat, getPrice]);
+  }, [getCheese, getSalad, getBacon, getMeat]);
 
   return (
     <>

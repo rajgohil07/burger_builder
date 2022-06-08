@@ -6,3 +6,10 @@ export const ingredientArray = [
   { Name: "Bacon", type: BurgerIngredientTypeEnum.Bacon },
   { Name: "Meat", type: BurgerIngredientTypeEnum.Meat },
 ];
+
+export const defaultIngredientsPrice = {
+  Cheese: 1,
+  Salad: 0.5,
+  Bacon: 1,
+  Meat: 2,
+};
