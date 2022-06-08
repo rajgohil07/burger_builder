@@ -51,7 +51,9 @@ export const Burger = ({ burgerOption }: { burgerOption: any }) => {
    */
   const arr1d = [].concat(...burgerData);
   if (arr1d.length === 0) {
-    burgerData = <p>Please start adding your ingredients!</p>;
+    burgerData = (
+      <p className="noIngredients">Please start adding your ingredients!</p>
+    );
   }
   return (
     <div className="Burger">

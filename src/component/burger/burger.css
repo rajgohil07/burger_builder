@@ -8,6 +8,19 @@
     font-size: 1.2rem;
 }
 
+.noIngredients {
+    font-size: 22px;
+    transition: all 250ms linear;
+}
+
+.noIngredients:hover {
+    transition: all 250ms linear;
+    font-size: 32px;
+    border: 5px solid black;
+    border-radius: 15px;
+    padding: 10px 0;
+}
+
 @media (min-width: 500px) and (min-height: 400px) {
     .Burger {
         width: 350px;
