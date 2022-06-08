@@ -1,3 +1,5 @@
+import "./burger_controllers.css";
+
 export const BurgerControllers = () => {
-  return <div></div>;
+  return <div className="BuildControls"></div>;
 };

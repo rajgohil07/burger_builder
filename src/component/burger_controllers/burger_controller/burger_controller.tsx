@@ -1,9 +1,11 @@
+import "./burger_controller.css";
+
 export const BurgerController = () => {
   return (
     <div>
-      <label htmlFor=""></label>
-      <button>Less</button>
-      <button>More</button>
+      <label className="Label" htmlFor=""></label>
+      <button className="Less">Less</button>
+      <button className="More">More</button>
     </div>
   );
 };
