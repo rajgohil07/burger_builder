@@ -1,7 +1,13 @@
+/* eslint-disable @typescript-eslint/no-unused-expressions */
 import { useEffect, useState } from "react";
 import { Burger } from "../../component/burger/burger";
 import { BurgerControllers } from "../../component/burger_controllers/burger_controllers";
+import { IAddOrRemoveIngredientType } from "../../types/add_or_remove_ingredient_type";
 import { IBurgerOptionType } from "../../types/burger_option_types";
+import {
+  BurgerIngredientTypeEnum,
+  IBurgerIngredientType,
+} from "../../types/burger_ingredient_types";
 
 export const BurgerBuilder = () => {
   // set burger option state
@@ -18,6 +24,29 @@ export const BurgerBuilder = () => {
     meat: getMeat,
   };
 
+  const updateIngredients = (
+    addOrRemoveType: IAddOrRemoveIngredientType,
+    ingredientType: IBurgerIngredientType
+  ) => {
+    const value: -1 | 1 = addOrRemoveType ? 1 : -1;
+    switch (ingredientType) {
+      case BurgerIngredientTypeEnum.Bacon:
+        getBacon > 0 || value !== -1 ? setBacon(getBacon + value) : null;
+        break;
+      case BurgerIngredientTypeEnum.Cheese:
+        getCheese > 0 || value !== -1 ? setCheese(getCheese + value) : null;
+        break;
+      case BurgerIngredientTypeEnum.Meat:
+        getMeat > 0 || value !== -1 ? setMeat(getMeat + value) : null;
+        break;
+      case BurgerIngredientTypeEnum.Salad:
+        getSalad > 0 || value !== -1 ? setSalad(getSalad + value) : null;
+        break;
+      default:
+        break;
+    }
+  };
+
   useEffect(() => {
     burgerOption.cheese = getCheese;
     burgerOption.bacon = getBacon;
@@ -29,7 +58,7 @@ export const BurgerBuilder = () => {
   return (
     <>
       <Burger burgerOption={burgerOption} />
-      <BurgerControllers />
+      <BurgerControllers buttonClickEvent={updateIngredients} />
     </>
   );
 };
