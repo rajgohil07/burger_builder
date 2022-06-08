@@ -1,10 +1,6 @@
 import { BurgerIngredient } from "./burger_ingredient/burger_ingredient";
 import { BurgerIngredientTypeEnum } from "../../types/burger_ingredient_types";
 import "./burger.css";
-import {
-  IBurgerOptionType,
-  validStringOptions,
-} from "../../types/burger_option_types";
 
 export const Burger = ({ burgerOption }: { burgerOption: any }) => {
   const burgerData: any = Object.keys(burgerOption).map((keyName: any) =>
