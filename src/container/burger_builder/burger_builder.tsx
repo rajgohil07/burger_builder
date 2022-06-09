@@ -19,12 +19,7 @@ export const BurgerBuilder = () => {
   const [getPrice, setPrice] = useState<number>(0);
   const [getDisableIngredientTypes, setDisableIngredientTypes] = useState<
     IBurgerIngredientType[]
-  >([
-    BurgerIngredientTypeEnum.Bacon,
-    BurgerIngredientTypeEnum.Cheese,
-    BurgerIngredientTypeEnum.Meat,
-    BurgerIngredientTypeEnum.Salad,
-  ]);
+  >([]);
 
   const burgerOption: IBurgerOptionType = {
     cheese: getCheese,
@@ -32,13 +27,6 @@ export const BurgerBuilder = () => {
     salad: getSalad,
     meat: getMeat,
   };
-
-  // let disabledButtonArrayList: IBurgerIngredientType[] = [
-  //   BurgerIngredientTypeEnum.Bacon,
-  //   BurgerIngredientTypeEnum.Cheese,
-  //   BurgerIngredientTypeEnum.Meat,
-  //   BurgerIngredientTypeEnum.Salad,
-  // ];
 
   // update the ingredients
   const updateIngredients = (
@@ -76,52 +64,12 @@ export const BurgerBuilder = () => {
 
   //handle disable button array
   const handleDisableButtonArray = () => {
-    console.log("getCheese", getCheese);
-    console.log("getSalad", getSalad);
-    console.log("getMeat", getMeat);
-    console.log("getBacon", getBacon);
-    console.log("before :>> ", getDisableIngredientTypes);
-    getCheese === 0
-      ? setDisableIngredientTypes([
-          ...getDisableIngredientTypes,
-          BurgerIngredientTypeEnum.Cheese,
-        ])
-      : setDisableIngredientTypes(
-          getDisableIngredientTypes.filter(
-            (singularData) => singularData !== BurgerIngredientTypeEnum.Cheese
-          )
-        );
-    getSalad === 0
-      ? setDisableIngredientTypes([
-          ...getDisableIngredientTypes,
-          BurgerIngredientTypeEnum.Salad,
-        ])
-      : setDisableIngredientTypes(
-          getDisableIngredientTypes.filter(
-            (singularData) => singularData !== BurgerIngredientTypeEnum.Salad
-          )
-        );
-    getMeat === 0
-      ? setDisableIngredientTypes([
-          ...getDisableIngredientTypes,
-          BurgerIngredientTypeEnum.Meat,
-        ])
-      : setDisableIngredientTypes(
-          getDisableIngredientTypes.filter(
-            (singularData) => singularData !== BurgerIngredientTypeEnum.Meat
-          )
-        );
-    getBacon === 0
-      ? setDisableIngredientTypes([
-          ...getDisableIngredientTypes,
-          BurgerIngredientTypeEnum.Bacon,
-        ])
-      : setDisableIngredientTypes(
-          getDisableIngredientTypes.filter(
-            (singularData) => singularData !== BurgerIngredientTypeEnum.Bacon
-          )
-        );
-    console.log("after :>> ", getDisableIngredientTypes);
+    const tempArray: IBurgerIngredientType[] = [];
+    !getCheese ? tempArray.push(BurgerIngredientTypeEnum.Cheese) : null;
+    !getSalad ? tempArray.push(BurgerIngredientTypeEnum.Salad) : null;
+    !getMeat ? tempArray.push(BurgerIngredientTypeEnum.Meat) : null;
+    !getBacon ? tempArray.push(BurgerIngredientTypeEnum.Bacon) : null;
+    setDisableIngredientTypes(tempArray);
   };
 
   useEffect(() => {

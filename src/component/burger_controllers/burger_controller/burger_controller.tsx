@@ -13,13 +13,7 @@ export const BurgerController = ({
   type: IBurgerIngredientType;
   disabledButtonArrayList: IBurgerIngredientType[];
 }) => {
-  // console.log(disabledButtonArrayList);
   const x = disabledButtonArrayList.indexOf(type) > -1 ? true : false;
-  // const x = disabledButtonArrayList.indexOf(type);
-  // console.log("disabledButtonArrayList :>> ", disabledButtonArrayList);
-  // console.log("type :>> ", type);
-  // console.log("x :>> ", x);
-  // console.log("-----------------------------");
   return (
     <div className="BuildControl">
       <label className="Label" htmlFor="">
