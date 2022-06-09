@@ -5,6 +5,7 @@ import { BurgerControllers } from "../../component/burger_controllers/burger_con
 import { IAddOrRemoveIngredientType } from "../../types/add_or_remove_ingredient_type";
 import { IBurgerOptionType } from "../../types/burger_option_types";
 import { defaultIngredientsPrice } from "../../constants/constants";
+
 import {
   BurgerIngredientTypeEnum,
   IBurgerIngredientType,
@@ -72,6 +73,14 @@ export const BurgerBuilder = () => {
     setDisableIngredientTypes(tempArray);
   };
 
+  // clear all button
+  const clearAllEvent = () => {
+    setCheese(0);
+    setSalad(0);
+    setMeat(0);
+    setBacon(0);
+  };
+
   useEffect(() => {
     burgerOption.cheese = getCheese;
     burgerOption.bacon = getBacon;
@@ -89,6 +98,7 @@ export const BurgerBuilder = () => {
         buttonClickEvent={updateIngredients}
         disabledButtonArrayList={getDisableIngredientTypes}
         price={getPrice}
+        clearAll={clearAllEvent}
       />
     </>
   );

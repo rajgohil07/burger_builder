@@ -25,3 +25,13 @@
     color: white;
     transition: all 250ms linear;
 }
+
+.merger {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.merger p {
+    margin-right: 21px;
+}
