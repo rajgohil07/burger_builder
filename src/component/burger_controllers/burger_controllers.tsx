@@ -1,19 +1,21 @@
 import { BurgerController } from "./burger_controller/burger_controller";
 import { ingredientArray } from "../../constants/constants";
 import { IBurgerIngredientType } from "../../types/burger_ingredient_types";
-import "./burger_controllers.css";
 import { DialogBox } from "../dialog/dialog";
+import "./burger_controllers.css";
 
 export const BurgerControllers = ({
   buttonClickEvent,
   disabledButtonArrayList,
   price,
   clearAll,
+  isClearAllDisabled,
 }: {
   buttonClickEvent: Function;
   disabledButtonArrayList: IBurgerIngredientType[];
   price: number;
   clearAll: Function;
+  isClearAllDisabled: boolean;
 }) => {
   return (
     <div className="BuildControls">
@@ -22,6 +24,7 @@ export const BurgerControllers = ({
           Total price: <strong>{`${price.toFixed(2)} $`}</strong>
         </p>
         <DialogBox
+          isClearAllDisabled={isClearAllDisabled}
           name="CLEAR ALL"
           successFn={clearAll}
           title="Are you sure you want to do this?"

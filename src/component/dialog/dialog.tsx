@@ -11,11 +11,13 @@ export const DialogBox = ({
   successFn: clearAll,
   title,
   body,
+  isClearAllDisabled,
 }: {
   name: string;
   successFn: Function;
   title: string;
   body: string;
+  isClearAllDisabled: boolean;
 }) => {
   const [open, setOpen] = React.useState(false);
   const handleClickOpen = () => setOpen(true);
@@ -23,7 +25,12 @@ export const DialogBox = ({
 
   return (
     <div>
-      <Button variant="contained" color="error" onClick={handleClickOpen}>
+      <Button
+        disabled={isClearAllDisabled}
+        variant="contained"
+        color="error"
+        onClick={handleClickOpen}
+      >
         {name}
       </Button>
       <Dialog
