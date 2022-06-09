@@ -4,11 +4,11 @@ import { Burger } from "../../component/burger/burger";
 import { BurgerControllers } from "../../component/burger_controllers/burger_controllers";
 import { IAddOrRemoveIngredientType } from "../../types/add_or_remove_ingredient_type";
 import { IBurgerOptionType } from "../../types/burger_option_types";
+import { defaultIngredientsPrice } from "../../constants/constants";
 import {
   BurgerIngredientTypeEnum,
   IBurgerIngredientType,
 } from "../../types/burger_ingredient_types";
-import { defaultIngredientsPrice } from "../../constants/constants";
 
 export const BurgerBuilder = () => {
   // set burger option state
@@ -17,6 +17,14 @@ export const BurgerBuilder = () => {
   const [getMeat, setMeat] = useState<number>(0);
   const [getBacon, setBacon] = useState<number>(0);
   const [getPrice, setPrice] = useState<number>(0);
+  const [getDisableIngredientTypes, setDisableIngredientTypes] = useState<
+    IBurgerIngredientType[]
+  >([
+    BurgerIngredientTypeEnum.Bacon,
+    BurgerIngredientTypeEnum.Cheese,
+    BurgerIngredientTypeEnum.Meat,
+    BurgerIngredientTypeEnum.Salad,
+  ]);
 
   const burgerOption: IBurgerOptionType = {
     cheese: getCheese,
@@ -25,12 +33,12 @@ export const BurgerBuilder = () => {
     meat: getMeat,
   };
 
-  const disabledButtonArrayList: IBurgerIngredientType[] = [
-    // BurgerIngredientTypeEnum.Bacon,
-    // BurgerIngredientTypeEnum.Cheese,
-    // BurgerIngredientTypeEnum.Meat,
-    // BurgerIngredientTypeEnum.Salad,
-  ];
+  // let disabledButtonArrayList: IBurgerIngredientType[] = [
+  //   BurgerIngredientTypeEnum.Bacon,
+  //   BurgerIngredientTypeEnum.Cheese,
+  //   BurgerIngredientTypeEnum.Meat,
+  //   BurgerIngredientTypeEnum.Salad,
+  // ];
 
   // update the ingredients
   const updateIngredients = (
@@ -66,24 +74,63 @@ export const BurgerBuilder = () => {
     setPrice(newPrice);
   };
 
+  //handle disable button array
+  const handleDisableButtonArray = () => {
+    console.log("getCheese", getCheese);
+    console.log("getSalad", getSalad);
+    console.log("getMeat", getMeat);
+    console.log("getBacon", getBacon);
+    console.log("before :>> ", getDisableIngredientTypes);
+    getCheese === 0
+      ? setDisableIngredientTypes([
+          ...getDisableIngredientTypes,
+          BurgerIngredientTypeEnum.Cheese,
+        ])
+      : setDisableIngredientTypes(
+          getDisableIngredientTypes.filter(
+            (singularData) => singularData !== BurgerIngredientTypeEnum.Cheese
+          )
+        );
+    getSalad === 0
+      ? setDisableIngredientTypes([
+          ...getDisableIngredientTypes,
+          BurgerIngredientTypeEnum.Salad,
+        ])
+      : setDisableIngredientTypes(
+          getDisableIngredientTypes.filter(
+            (singularData) => singularData !== BurgerIngredientTypeEnum.Salad
+          )
+        );
+    getMeat === 0
+      ? setDisableIngredientTypes([
+          ...getDisableIngredientTypes,
+          BurgerIngredientTypeEnum.Meat,
+        ])
+      : setDisableIngredientTypes(
+          getDisableIngredientTypes.filter(
+            (singularData) => singularData !== BurgerIngredientTypeEnum.Meat
+          )
+        );
+    getBacon === 0
+      ? setDisableIngredientTypes([
+          ...getDisableIngredientTypes,
+          BurgerIngredientTypeEnum.Bacon,
+        ])
+      : setDisableIngredientTypes(
+          getDisableIngredientTypes.filter(
+            (singularData) => singularData !== BurgerIngredientTypeEnum.Bacon
+          )
+        );
+    console.log("after :>> ", getDisableIngredientTypes);
+  };
+
   useEffect(() => {
     burgerOption.cheese = getCheese;
     burgerOption.bacon = getBacon;
     burgerOption.salad = getSalad;
     burgerOption.meat = getMeat;
     updateBurgerAmount();
-    !getCheese
-      ? disabledButtonArrayList.push(BurgerIngredientTypeEnum.Cheese)
-      : null;
-    !getSalad
-      ? disabledButtonArrayList.push(BurgerIngredientTypeEnum.Salad)
-      : null;
-    !getMeat
-      ? disabledButtonArrayList.push(BurgerIngredientTypeEnum.Meat)
-      : null;
-    !getBacon
-      ? disabledButtonArrayList.push(BurgerIngredientTypeEnum.Bacon)
-      : null;
+    handleDisableButtonArray();
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [getCheese, getSalad, getBacon, getMeat]);
 
@@ -92,7 +139,7 @@ export const BurgerBuilder = () => {
       <Burger burgerOption={burgerOption} />
       <BurgerControllers
         buttonClickEvent={updateIngredients}
-        disabledButtonArrayList={disabledButtonArrayList}
+        disabledButtonArrayList={getDisableIngredientTypes}
       />
     </>
   );
