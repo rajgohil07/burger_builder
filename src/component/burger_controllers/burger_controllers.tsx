@@ -16,6 +16,7 @@ export const BurgerControllers = ({
     <div className="BuildControls">
       <p>
         Total price: <strong>{`${price.toFixed(2)} $`}</strong>
+        <button className="clearAllButton">CLEAR ALL</button>
       </p>
       {ingredientArray.map((singleIngredient) => (
         <BurgerController

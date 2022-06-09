@@ -8,3 +8,20 @@
     margin: auto;
     padding: 10px 0;
 }
+
+.clearAllButton {
+    padding: 5px;
+    margin: 0 5px 0px 20px;
+    border: 1px solid #AA6817;
+    cursor: pointer;
+    outline: none;
+    background-color: #D39952;
+    color: white;
+    transition: all 250ms linear;
+}
+
+.clearAllButton:hover {
+    background-color: #DAA972;
+    color: white;
+    transition: all 250ms linear;
+}
