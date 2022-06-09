@@ -10,6 +10,6 @@ export const ingredientArray = [
 export const defaultIngredientsPrice = {
   Cheese: 1,
   Salad: 0.5,
-  Bacon: 1,
+  Bacon: 0.75,
   Meat: 2,
 };

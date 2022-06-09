@@ -88,6 +88,7 @@ export const BurgerBuilder = () => {
       <BurgerControllers
         buttonClickEvent={updateIngredients}
         disabledButtonArrayList={getDisableIngredientTypes}
+        price={getPrice}
       />
     </>
   );

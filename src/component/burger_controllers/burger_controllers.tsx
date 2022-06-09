@@ -6,12 +6,17 @@ import "./burger_controllers.css";
 export const BurgerControllers = ({
   buttonClickEvent,
   disabledButtonArrayList,
+  price,
 }: {
   buttonClickEvent: Function;
   disabledButtonArrayList: IBurgerIngredientType[];
+  price: number;
 }) => {
   return (
     <div className="BuildControls">
+      <p>
+        Total price: <strong>{`${price.toFixed(2)} $`}</strong>
+      </p>
       {ingredientArray.map((singleIngredient) => (
         <BurgerController
           buttonClickEvent={buttonClickEvent}
