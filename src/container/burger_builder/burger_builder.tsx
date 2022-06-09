@@ -25,6 +25,13 @@ export const BurgerBuilder = () => {
     meat: getMeat,
   };
 
+  const disabledButtonArrayList: IBurgerIngredientType[] = [
+    // BurgerIngredientTypeEnum.Bacon,
+    // BurgerIngredientTypeEnum.Cheese,
+    // BurgerIngredientTypeEnum.Meat,
+    // BurgerIngredientTypeEnum.Salad,
+  ];
+
   // update the ingredients
   const updateIngredients = (
     addOrRemoveType: IAddOrRemoveIngredientType,
@@ -65,13 +72,28 @@ export const BurgerBuilder = () => {
     burgerOption.salad = getSalad;
     burgerOption.meat = getMeat;
     updateBurgerAmount();
+    !getCheese
+      ? disabledButtonArrayList.push(BurgerIngredientTypeEnum.Cheese)
+      : null;
+    !getSalad
+      ? disabledButtonArrayList.push(BurgerIngredientTypeEnum.Salad)
+      : null;
+    !getMeat
+      ? disabledButtonArrayList.push(BurgerIngredientTypeEnum.Meat)
+      : null;
+    !getBacon
+      ? disabledButtonArrayList.push(BurgerIngredientTypeEnum.Bacon)
+      : null;
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [getCheese, getSalad, getBacon, getMeat]);
 
   return (
     <>
       <Burger burgerOption={burgerOption} />
-      <BurgerControllers buttonClickEvent={updateIngredients} />
+      <BurgerControllers
+        buttonClickEvent={updateIngredients}
+        disabledButtonArrayList={disabledButtonArrayList}
+      />
     </>
   );
 };
