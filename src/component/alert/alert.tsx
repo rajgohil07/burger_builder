@@ -24,6 +24,7 @@ export const AlertComponent = ({
         open={isOpen}
         autoHideDuration={timing}
         onClose={() => {}}
+        transitionDuration={timing / 8}
       >
         <Alert
           style={{
