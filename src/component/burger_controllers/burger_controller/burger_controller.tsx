@@ -13,14 +13,15 @@ export const BurgerController = ({
   type: IBurgerIngredientType;
   disabledButtonArrayList: IBurgerIngredientType[];
 }) => {
-  const x = disabledButtonArrayList.indexOf(type) > -1 ? true : false;
+  const isDisabled: boolean =
+    disabledButtonArrayList.indexOf(type) > -1 ? true : false;
   return (
     <div className="BuildControl">
       <label className="Label" htmlFor="">
         {name}
       </label>
       <button
-        disabled={x}
+        disabled={isDisabled}
         className="Less"
         onClick={() =>
           buttonClickEvent(addOrRemoveIngredientTypeEnum.Less, type)
