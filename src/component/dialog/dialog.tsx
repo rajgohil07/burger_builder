@@ -6,6 +6,7 @@ import DialogContent from "@mui/material/DialogContent";
 import DialogContentText from "@mui/material/DialogContentText";
 import DialogTitle from "@mui/material/DialogTitle";
 import { AlertComponent } from "../alert/alert";
+import { IButtonType } from "../../types/button_type";
 
 export const DialogBox = ({
   name,
@@ -19,6 +20,7 @@ export const DialogBox = ({
   getDisplayAlert,
   timing,
   alertText,
+  buttonColorType,
 }: {
   name: string;
   successFn: Function;
@@ -31,6 +33,7 @@ export const DialogBox = ({
   getDisplayAlert: boolean;
   timing: number;
   alertText: string;
+  buttonColorType: IButtonType;
 }) => {
   const [open, setOpen] = useState(false);
   const handleClickOpen = () => setOpen(true);
@@ -49,7 +52,7 @@ export const DialogBox = ({
       <Button
         disabled={isClearAllDisabled}
         variant="contained"
-        color="error"
+        color={buttonColorType}
         onClick={handleClickOpen}
       >
         {name}

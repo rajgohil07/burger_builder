@@ -40,6 +40,7 @@ export const BurgerControllers = ({
           successFn={clearAll}
           title={dialogBox.clearAllButton.title}
           body={dialogBox.clearAllButton.body}
+          buttonColorType="error"
         />
       </div>
       {ingredientArray.map((singleIngredient) => (
