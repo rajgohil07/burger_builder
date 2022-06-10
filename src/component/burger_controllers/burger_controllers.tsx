@@ -22,11 +22,16 @@ export const BurgerControllers = ({
   const [getDisplayAlert, setDisplayAlert] = useState(false);
   const setAlert = (value: boolean) => setDisplayAlert(value);
 
+  // order now dialog box
+  const [getOrderAlert, setOrderAlert] = useState(false);
+  const setOrderAlertValue = (value: boolean) => setOrderAlert(value);
+  const totalPrice = `${price.toFixed(2)} $`;
+
   return (
     <div className="BuildControls">
       <div className="merger">
         <p>
-          Total price: <strong>{`${price.toFixed(2)} $`}</strong>
+          Total price: <strong>{totalPrice}</strong>
         </p>
         <DialogBox
           isAlert={true}
@@ -36,7 +41,7 @@ export const BurgerControllers = ({
           timing={defaultAlertTiming}
           alertText={message.burgerIngredientsResetMessage}
           isClearAllDisabled={isClearAllDisabled}
-          name="CLEAR ALL"
+          name="clear all"
           successFn={clearAll}
           title={dialogBox.clearAllButton.title}
           body={dialogBox.clearAllButton.body}
@@ -52,6 +57,20 @@ export const BurgerControllers = ({
           disabledButtonArrayList={disabledButtonArrayList}
         />
       ))}
+      <DialogBox
+        isAlert={true}
+        isSuccess={true}
+        setAlert={setOrderAlertValue}
+        getDisplayAlert={getOrderAlert}
+        timing={defaultAlertTiming}
+        alertText={message.orderConfirm}
+        isClearAllDisabled={isClearAllDisabled}
+        name="order now"
+        successFn={clearAll}
+        title={dialogBox.orderButton.title}
+        body={`${dialogBox.orderButton.body} ${totalPrice}`}
+        buttonColorType="success"
+      />
     </div>
   );
 };

@@ -21,11 +21,16 @@ export const defaultAlertTiming: number = 5000;
 
 export const message: { [key: string]: string } = {
   burgerIngredientsResetMessage: "All burger ingredients has ben reset!",
+  orderConfirm: "Congratulations! Your burger order has been placed!",
 };
 
 export const dialogBox: IDialogBox = {
   clearAllButton: {
     title: "Are you sure you want to do this?",
     body: "After doing this all of your ingredients will be removed",
+  },
+  orderButton: {
+    title: "Are you sure?",
+    body: "Are you sure you want to order this burger? it will cost you about ",
   },
 };
