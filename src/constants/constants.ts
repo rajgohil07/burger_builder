@@ -17,3 +17,7 @@ export const defaultIngredientsPrice = {
 export const defaultAlertText: string = "This is a success message";
 
 export const defaultAlertTiming: number = 5000;
+
+export const message: { [key: string]: string } = {
+  burgerIngredientsResetMessage: "All burger ingredients has ben reset!",
+};

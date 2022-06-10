@@ -1,10 +1,12 @@
-import React from "react";
+import React, { useState } from "react";
 import Button from "@mui/material/Button";
 import Dialog from "@mui/material/Dialog";
 import DialogActions from "@mui/material/DialogActions";
 import DialogContent from "@mui/material/DialogContent";
 import DialogContentText from "@mui/material/DialogContentText";
 import DialogTitle from "@mui/material/DialogTitle";
+import { AlertComponent } from "../alert/alert";
+import { defaultAlertTiming, message } from "../../constants/constants";
 
 export const DialogBox = ({
   name,
@@ -20,11 +22,23 @@ export const DialogBox = ({
   isClearAllDisabled: boolean;
 }) => {
   const [open, setOpen] = React.useState(false);
+  const [getDisplayAlert, setDisplayAlert] = useState(false);
   const handleClickOpen = () => setOpen(true);
   const handleClose = () => setOpen(false);
 
+  const setAlert = () => {
+    setDisplayAlert(false);
+  };
+
   return (
     <div>
+      <AlertComponent
+        isOpen={getDisplayAlert}
+        alertText={message.burgerIngredientsResetMessage}
+        timing={defaultAlertTiming}
+        isSuccess={true}
+        setAlert={setAlert}
+      />
       <Button
         disabled={isClearAllDisabled}
         variant="contained"
@@ -55,6 +69,7 @@ export const DialogBox = ({
             onClick={() => {
               clearAll();
               handleClose();
+              setDisplayAlert(true);
             }}
           >
             Yes, I'm sure
