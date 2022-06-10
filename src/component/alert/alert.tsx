@@ -26,7 +26,9 @@ export const AlertComponent = ({
         onClose={() => {}}
       >
         <Alert
-          style={{ backgroundColor: "rgb(78,154,81)" }}
+          style={{
+            backgroundColor: isSuccess ? "rgb(78,154,81)" : "rgb(211,47,47)",
+          }}
           variant="filled"
           onClose={() => {
             setAlert();
