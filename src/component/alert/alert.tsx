@@ -32,7 +32,7 @@ export const AlertComponent = ({
           }}
           variant="filled"
           onClose={() => {
-            setAlert();
+            setAlert(false);
           }}
           severity={isSuccess ? "success" : "error"}
           sx={{ width: "100%" }}

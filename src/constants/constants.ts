@@ -1,4 +1,5 @@
 import { BurgerIngredientTypeEnum } from "../types/burger_ingredient_types";
+import { IDialogBox } from "../types/dialog_box_types";
 
 export const ingredientArray = [
   { Name: "Cheese", type: BurgerIngredientTypeEnum.Cheese },
@@ -20,4 +21,11 @@ export const defaultAlertTiming: number = 5000;
 
 export const message: { [key: string]: string } = {
   burgerIngredientsResetMessage: "All burger ingredients has ben reset!",
+};
+
+export const dialogBox: IDialogBox = {
+  clearAllButton: {
+    title: "Are you sure you want to do this?",
+    body: "After doing this all of your ingredients will be removed",
+  },
 };
