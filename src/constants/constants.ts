@@ -13,3 +13,7 @@ export const defaultIngredientsPrice = {
   Bacon: 0.75,
   Meat: 2,
 };
+
+export const defaultAlertText: string = "This is a success message";
+
+export const defaultAlertTiming: number = 5000;
