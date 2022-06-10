@@ -4,6 +4,7 @@ import { IBurgerIngredientType } from "../../types/burger_ingredient_types";
 import { DialogBox } from "../dialog/dialog";
 import { useState } from "react";
 import { defaultAlertTiming, message } from "../../constants/constants";
+import { Box, Button } from "@mui/material";
 import "./burger_controllers.css";
 
 export const BurgerControllers = ({
@@ -71,6 +72,16 @@ export const BurgerControllers = ({
         body={`${dialogBox.orderButton.body} ${totalPrice}`}
         buttonColorType="success"
       />
+      <Box mt={2}>
+        <Button
+          disabled={isClearAllDisabled}
+          variant="contained"
+          color="success"
+          onClick={() => {}}
+        >
+          order now
+        </Button>
+      </Box>
     </div>
   );
 };
