@@ -7,13 +7,19 @@ import {
 export const AlertComponent = ({
   alertText = defaultAlertText,
   timing = defaultAlertTiming,
+  isSuccess = true,
 }: {
   alertText: string;
   timing: number;
+  isSuccess: boolean;
 }) => {
   <>
     <Snackbar open={true} autoHideDuration={timing} onClose={() => {}}>
-      <Alert onClose={() => {}} severity="success" sx={{ width: "100%" }}>
+      <Alert
+        onClose={() => {}}
+        severity={isSuccess ? "success" : "error"}
+        sx={{ width: "100%" }}
+      >
         {alertText}
       </Alert>
     </Snackbar>
