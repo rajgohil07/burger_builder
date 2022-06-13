@@ -83,7 +83,7 @@ export const BurgerControllers = ({
           color="success"
           onClick={() => setOrderSummaryModel(true)}
         >
-          order now
+          view order summary
         </Button>
       </Box>
       <ModelComponent

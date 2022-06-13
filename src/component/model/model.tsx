@@ -4,18 +4,6 @@ import Modal from "@mui/material/Modal";
 import { AiFillCloseSquare } from "react-icons/ai";
 import "./model.css";
 
-const style = {
-  position: "absolute" as "absolute",
-  top: "50%",
-  left: "50%",
-  transform: "translate(-50%, -50%)",
-  width: 400,
-  bgcolor: "#E6E6FA",
-  border: "1px solid #000",
-  boxShadow: 5,
-  p: 3,
-};
-
 // reference https://stackoverflow.com/a/7224605/15350391
 const capitalize = (s: string) => s && s[0].toUpperCase() + s.slice(1);
 
@@ -38,7 +26,7 @@ export const ModelComponent = ({
         aria-labelledby="modal-modal-title"
         aria-describedby="modal-modal-description"
       >
-        <Box sx={style}>
+        <Box className="mainModelBox">
           <div className="modelCloseTagMerger">
             <Typography id="modal-modal-title" variant="h6" component="h2">
               <strong>Your burger total summary!</strong>
@@ -51,7 +39,7 @@ export const ModelComponent = ({
           <Typography id="modal-modal-description" sx={{ mt: 2 }}>
             A delicious burger with the following ingredients.
           </Typography>
-          <Typography className="yourOrder">
+          <div className="yourOrder">
             <p>Your order:</p>
             <ul>
               {Object.keys(burgerOption).map((singularData: any) => (
@@ -62,11 +50,11 @@ export const ModelComponent = ({
               <hr className="dottedLine" />
               <li>
                 <strong>
-                  Total price: <span>{totalPrice}$</span>
+                  Total price: <span>{totalPrice}</span>
                 </strong>
               </li>
             </ul>
-          </Typography>
+          </div>
         </Box>
       </Modal>
     </div>
