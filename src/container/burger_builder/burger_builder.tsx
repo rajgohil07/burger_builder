@@ -104,6 +104,7 @@ export const BurgerBuilder = () => {
         price={getPrice}
         clearAll={clearAllEvent}
         isClearAllDisabled={isDisabledClearAllButton}
+        burgerOption={burgerOption}
       />
     </>
   );

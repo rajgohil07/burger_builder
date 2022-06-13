@@ -19,4 +19,24 @@
 
 .yourOrder p {
     font-size: 22px;
+    margin: 1rem 0 0 0;
+    font-weight: 700;
+}
+
+.yourOrder ul {
+    margin: 0px;
+    list-style-type: none;
+    padding-left: 0px;
+}
+
+.dottedLine {
+    border: none;
+    border-top: 3px dotted #000;
+    color: #fff;
+    background-color: #fff;
+    height: 1px;
+}
+
+.yourOrder li span {
+    font-size: 20px;
 }

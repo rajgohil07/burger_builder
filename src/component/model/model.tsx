@@ -1,4 +1,3 @@
-import * as React from "react";
 import Box from "@mui/material/Box";
 import Typography from "@mui/material/Typography";
 import Modal from "@mui/material/Modal";
@@ -17,12 +16,19 @@ const style = {
   p: 3,
 };
 
+// reference https://stackoverflow.com/a/7224605/15350391
+const capitalize = (s: string) => s && s[0].toUpperCase() + s.slice(1);
+
 export const ModelComponent = ({
   modelStatus,
   changeModelStatus,
+  burgerOption,
+  totalPrice,
 }: {
   modelStatus: boolean;
   changeModelStatus: Function;
+  burgerOption: any;
+  totalPrice: string;
 }) => {
   return (
     <div>
@@ -47,6 +53,19 @@ export const ModelComponent = ({
           </Typography>
           <Typography className="yourOrder">
             <p>Your order:</p>
+            <ul>
+              {Object.keys(burgerOption).map((singularData: any) => (
+                <li key={singularData}>
+                  {capitalize(singularData)}:{burgerOption[singularData]}
+                </li>
+              ))}
+              <hr className="dottedLine" />
+              <li>
+                <strong>
+                  Total price: <span>{totalPrice}$</span>
+                </strong>
+              </li>
+            </ul>
           </Typography>
         </Box>
       </Modal>

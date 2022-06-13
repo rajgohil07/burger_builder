@@ -7,6 +7,7 @@ import { defaultAlertTiming, message } from "../../constants/constants";
 import { Box, Button } from "@mui/material";
 import { ModelComponent } from "../model/model";
 import "./burger_controllers.css";
+import { IBurgerOptionType } from "../../types/burger_option_types";
 
 export const BurgerControllers = ({
   buttonClickEvent,
@@ -14,12 +15,14 @@ export const BurgerControllers = ({
   price,
   clearAll,
   isClearAllDisabled,
+  burgerOption,
 }: {
   buttonClickEvent: Function;
   disabledButtonArrayList: IBurgerIngredientType[];
   price: number;
   clearAll: Function;
   isClearAllDisabled: boolean;
+  burgerOption: IBurgerOptionType;
 }) => {
   const [getDisplayAlert, setDisplaySummary] = useState(false);
   const setAlert = (value: boolean) => setDisplaySummary(value);
@@ -85,7 +88,9 @@ export const BurgerControllers = ({
       </Box>
       <ModelComponent
         modelStatus={getOrderSummary}
+        burgerOption={burgerOption}
         changeModelStatus={setOrderSummaryModel}
+        totalPrice={totalPrice}
       />
     </div>
   );
