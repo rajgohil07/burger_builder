@@ -5,6 +5,7 @@ import { DialogBox } from "../dialog/dialog";
 import { useState } from "react";
 import { defaultAlertTiming, message } from "../../constants/constants";
 import { Box, Button } from "@mui/material";
+import { ModelComponent } from "../model/model";
 import "./burger_controllers.css";
 
 export const BurgerControllers = ({
@@ -20,12 +21,12 @@ export const BurgerControllers = ({
   clearAll: Function;
   isClearAllDisabled: boolean;
 }) => {
-  const [getDisplayAlert, setDisplayAlert] = useState(false);
-  const setAlert = (value: boolean) => setDisplayAlert(value);
+  const [getDisplayAlert, setDisplaySummary] = useState(false);
+  const setAlert = (value: boolean) => setDisplaySummary(value);
 
   // order now dialog box
-  const [getOrderAlert, setOrderAlert] = useState(false);
-  const setOrderAlertValue = (value: boolean) => setOrderAlert(value);
+  const [getOrderSummary, setOrderSummary] = useState(false);
+  const setOrderSummaryModel = (value: boolean) => setOrderSummary(value);
   const totalPrice = `${price.toFixed(2)} $`;
 
   return (
@@ -58,11 +59,11 @@ export const BurgerControllers = ({
           disabledButtonArrayList={disabledButtonArrayList}
         />
       ))}
-      <DialogBox
+      {/* <DialogBox
         isAlert={true}
         isSuccess={true}
         setAlert={setOrderAlertValue}
-        getDisplayAlert={getOrderAlert}
+        getDisplayAlert={getOrderSummary}
         timing={defaultAlertTiming}
         alertText={message.orderConfirm}
         isClearAllDisabled={isClearAllDisabled}
@@ -71,17 +72,21 @@ export const BurgerControllers = ({
         title={dialogBox.orderButton.title}
         body={`${dialogBox.orderButton.body} ${totalPrice}`}
         buttonColorType="success"
-      />
+      /> */}
       <Box mt={2}>
         <Button
           disabled={isClearAllDisabled}
           variant="contained"
           color="success"
-          onClick={() => {}}
+          onClick={() => setOrderSummaryModel(true)}
         >
           order now
         </Button>
       </Box>
+      <ModelComponent
+        modelStatus={getOrderSummary}
+        changeModelStatus={setOrderSummaryModel}
+      />
     </div>
   );
 };

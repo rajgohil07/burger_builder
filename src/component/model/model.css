@@ -1,0 +1,22 @@
+.modelCloseTagMerger {
+    display: flex;
+    position: relative;
+}
+
+.closeTag {
+    font-size: 30px;
+    transition: all 250ms ease;
+    position: absolute;
+    right: 0%;
+}
+
+.closeTag:hover {
+    font-size: 40px;
+    color: red;
+    margin-top: -5px;
+    transition: all 250ms ease;
+}
+
+.yourOrder p {
+    font-size: 22px;
+}
