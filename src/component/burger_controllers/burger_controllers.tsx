@@ -8,6 +8,7 @@ import { Box, Button } from "@mui/material";
 import { ModelComponent } from "../model/model";
 import { IBurgerOptionType } from "../../types/burger_option_types";
 import "./burger_controllers.css";
+import { AlertComponent } from "../alert/alert";
 
 export const BurgerControllers = ({
   buttonClickEvent,
@@ -35,6 +36,14 @@ export const BurgerControllers = ({
   // order summary dialog box
   const [getOrder, setOrder] = useState(false);
   const changeOrderConfirmStatus = (value: boolean) => setOrder(value);
+
+  // success message for
+  const [getDisplayOrderAlert, setDisplayOrderAlert] = useState(false);
+
+  // change the order success alert
+  const changeOrderConfirmSuccess = (status: boolean) =>
+    setDisplayOrderAlert(status);
+
   const totalPrice = `${price.toFixed(2)} $`;
 
   return (
@@ -88,21 +97,15 @@ export const BurgerControllers = ({
         getDisplayAlert={getOrder}
         isClearAllDisabled={isClearAllDisabled}
         successFn={clearAll}
+        changeOrderConfirmSuccess={changeOrderConfirmSuccess}
       />
-      {/* <DialogBox
-        isAlert={true}
-        isSuccess={true}
-        setAlert={changeOrderConfirmStatus}
-        getDisplayAlert={getOrder}
-        timing={defaultAlertTiming}
+      <AlertComponent
+        isOpen={getDisplayOrderAlert}
         alertText={message.orderConfirm}
-        isClearAllDisabled={isClearAllDisabled}
-        name="confirm order"
-        successFn={clearAll}
-        title={dialogBox.orderButton.title}
-        body={`${dialogBox.orderButton.body} ${totalPrice}`}
-        buttonColorType="success"
-      /> */}
+        timing={defaultAlertTiming}
+        isSuccess={true}
+        setAlert={changeOrderConfirmSuccess}
+      />
     </div>
   );
 };

@@ -25,6 +25,8 @@ export const DialogBox = ({
   confirmationFunction,
   successMessageButtonString,
   denyMessageButtonString,
+  changeModelStatus,
+  changeOrderConfirmSuccess,
 }: {
   name: string;
   successFn: Function;
@@ -42,6 +44,8 @@ export const DialogBox = ({
   confirmationFunction?: Function;
   successMessageButtonString?: string;
   denyMessageButtonString?: string;
+  changeModelStatus?: Function;
+  changeOrderConfirmSuccess?: Function;
 }) => {
   const [open, setOpen] = useState(false);
   const handleClickOpen = () => setOpen(true);
@@ -89,9 +93,13 @@ export const DialogBox = ({
             onClick={() => {
               clearAll();
               handleClose();
-              IsForConfirmation && confirmationFunction
-                ? confirmationFunction(true)
+              IsForConfirmation && confirmationFunction && changeModelStatus
+                ? changeModelStatus(false)
                 : setAlert(true);
+              // eslint-disable-next-line @typescript-eslint/no-unused-expressions
+              changeOrderConfirmSuccess
+                ? changeOrderConfirmSuccess(true)
+                : null;
             }}
           >
             {successMessageButtonString

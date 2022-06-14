@@ -2,7 +2,6 @@ import Box from "@mui/material/Box";
 import Typography from "@mui/material/Typography";
 import Modal from "@mui/material/Modal";
 import { AiFillCloseSquare } from "react-icons/ai";
-import { Button } from "@mui/material";
 import "./model.css";
 import { DialogBox } from "../dialog/dialog";
 import {
@@ -24,6 +23,7 @@ export const ModelComponent = ({
   getDisplayAlert,
   isClearAllDisabled,
   successFn,
+  changeOrderConfirmSuccess,
 }: {
   modelStatus: boolean;
   changeModelStatus: Function;
@@ -34,6 +34,7 @@ export const ModelComponent = ({
   getDisplayAlert: boolean;
   isClearAllDisabled: boolean;
   successFn: Function;
+  changeOrderConfirmSuccess?: Function;
 }) => {
   return (
     <div>
@@ -78,15 +79,8 @@ export const ModelComponent = ({
                 alignItems="center"
                 justifyContent="center"
               >
-                {/* <Button
-                  variant="contained"
-                  color="success"
-                  onClick={() => setAlertForConfirmation!(true)}
-                >
-                  confirm order
-                </Button> */}
                 <DialogBox
-                  isAlert={true}
+                  isAlert={false}
                   isSuccess={true}
                   setAlert={changeOrderConfirmStatus}
                   getDisplayAlert={getDisplayAlert}
@@ -102,6 +96,8 @@ export const ModelComponent = ({
                   confirmationFunction={setAlertForConfirmation}
                   successMessageButtonString={"Yes i want to purchase"}
                   denyMessageButtonString={"No i want to add more ingredients"}
+                  changeModelStatus={changeModelStatus}
+                  changeOrderConfirmSuccess={changeOrderConfirmSuccess}
                 />
               </Box>
             )}
