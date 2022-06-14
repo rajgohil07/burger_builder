@@ -21,6 +21,10 @@ export const DialogBox = ({
   timing,
   alertText,
   buttonColorType,
+  IsForConfirmation = false,
+  confirmationFunction,
+  successMessageButtonString,
+  denyMessageButtonString,
 }: {
   name: string;
   successFn: Function;
@@ -34,6 +38,10 @@ export const DialogBox = ({
   timing: number;
   alertText: string;
   buttonColorType: IButtonType;
+  IsForConfirmation?: boolean;
+  confirmationFunction?: Function;
+  successMessageButtonString?: string;
+  denyMessageButtonString?: string;
 }) => {
   const [open, setOpen] = useState(false);
   const handleClickOpen = () => setOpen(true);
@@ -71,7 +79,9 @@ export const DialogBox = ({
         </DialogContent>
         <DialogActions>
           <Button variant="contained" color="success" onClick={handleClose}>
-            No, not at the moment
+            {denyMessageButtonString
+              ? denyMessageButtonString
+              : "No, not at the moment"}
           </Button>
           <Button
             variant="contained"
@@ -79,10 +89,14 @@ export const DialogBox = ({
             onClick={() => {
               clearAll();
               handleClose();
-              setAlert(true);
+              IsForConfirmation && confirmationFunction
+                ? confirmationFunction(true)
+                : setAlert(true);
             }}
           >
-            Yes, I'm sure
+            {successMessageButtonString
+              ? successMessageButtonString
+              : "Yes, I'm sure"}
           </Button>
         </DialogActions>
       </Dialog>

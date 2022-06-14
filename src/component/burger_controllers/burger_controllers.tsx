@@ -56,6 +56,7 @@ export const BurgerControllers = ({
           title={dialogBox.clearAllButton.title}
           body={dialogBox.clearAllButton.body}
           buttonColorType="error"
+          IsForConfirmation={false}
         />
       </div>
       {ingredientArray.map((singleIngredient) => (
@@ -83,8 +84,12 @@ export const BurgerControllers = ({
         changeModelStatus={setOrderSummaryModel}
         totalPrice={totalPrice}
         setAlertForConfirmation={changeOrderConfirmStatus}
+        changeOrderConfirmStatus={changeOrderConfirmStatus}
+        getDisplayAlert={getOrder}
+        isClearAllDisabled={isClearAllDisabled}
+        successFn={clearAll}
       />
-      <DialogBox
+      {/* <DialogBox
         isAlert={true}
         isSuccess={true}
         setAlert={changeOrderConfirmStatus}
@@ -97,7 +102,7 @@ export const BurgerControllers = ({
         title={dialogBox.orderButton.title}
         body={`${dialogBox.orderButton.body} ${totalPrice}`}
         buttonColorType="success"
-      />
+      /> */}
     </div>
   );
 };
