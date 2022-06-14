@@ -1,15 +1,15 @@
 {
   "files": {
-    "main.css": "/burger_builder/static/css/main.6e581c5e.css",
-    "main.js": "/burger_builder/static/js/main.6fd830e8.js",
+    "main.css": "/burger_builder/static/css/main.d3938b5a.css",
+    "main.js": "/burger_builder/static/js/main.accb5471.js",
     "static/js/787.6a6096fd.chunk.js": "/burger_builder/static/js/787.6a6096fd.chunk.js",
     "index.html": "/burger_builder/index.html",
-    "main.6e581c5e.css.map": "/burger_builder/static/css/main.6e581c5e.css.map",
-    "main.6fd830e8.js.map": "/burger_builder/static/js/main.6fd830e8.js.map",
+    "main.d3938b5a.css.map": "/burger_builder/static/css/main.d3938b5a.css.map",
+    "main.accb5471.js.map": "/burger_builder/static/js/main.accb5471.js.map",
     "787.6a6096fd.chunk.js.map": "/burger_builder/static/js/787.6a6096fd.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.6e581c5e.css",
-    "static/js/main.6fd830e8.js"
+    "static/css/main.d3938b5a.css",
+    "static/js/main.accb5471.js"
   ]
 }
