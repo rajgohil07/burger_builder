@@ -6,8 +6,8 @@ import { useState } from "react";
 import { defaultAlertTiming, message } from "../../constants/constants";
 import { Box, Button } from "@mui/material";
 import { ModelComponent } from "../model/model";
-import "./burger_controllers.css";
 import { IBurgerOptionType } from "../../types/burger_option_types";
+import "./burger_controllers.css";
 
 export const BurgerControllers = ({
   buttonClickEvent,
@@ -24,12 +24,17 @@ export const BurgerControllers = ({
   isClearAllDisabled: boolean;
   burgerOption: IBurgerOptionType;
 }) => {
+  // state to clear all button
   const [getDisplayAlert, setDisplaySummary] = useState(false);
   const setAlert = (value: boolean) => setDisplaySummary(value);
 
-  // order now dialog box
+  // order summary dialog box
   const [getOrderSummary, setOrderSummary] = useState(false);
   const setOrderSummaryModel = (value: boolean) => setOrderSummary(value);
+
+  // order summary dialog box
+  const [getOrder, setOrder] = useState(false);
+  const changeOrderConfirmStatus = (value: boolean) => setOrder(value);
   const totalPrice = `${price.toFixed(2)} $`;
 
   return (
@@ -62,20 +67,6 @@ export const BurgerControllers = ({
           disabledButtonArrayList={disabledButtonArrayList}
         />
       ))}
-      {/* <DialogBox
-        isAlert={true}
-        isSuccess={true}
-        setAlert={setOrderAlertValue}
-        getDisplayAlert={getOrderSummary}
-        timing={defaultAlertTiming}
-        alertText={message.orderConfirm}
-        isClearAllDisabled={isClearAllDisabled}
-        name="order now"
-        successFn={clearAll}
-        title={dialogBox.orderButton.title}
-        body={`${dialogBox.orderButton.body} ${totalPrice}`}
-        buttonColorType="success"
-      /> */}
       <Box mt={2}>
         <Button
           disabled={isClearAllDisabled}
@@ -91,6 +82,21 @@ export const BurgerControllers = ({
         burgerOption={burgerOption}
         changeModelStatus={setOrderSummaryModel}
         totalPrice={totalPrice}
+        setAlertForConfirmation={changeOrderConfirmStatus}
+      />
+      <DialogBox
+        isAlert={true}
+        isSuccess={true}
+        setAlert={changeOrderConfirmStatus}
+        getDisplayAlert={getOrder}
+        timing={defaultAlertTiming}
+        alertText={message.orderConfirm}
+        isClearAllDisabled={isClearAllDisabled}
+        name="confirm order"
+        successFn={clearAll}
+        title={dialogBox.orderButton.title}
+        body={`${dialogBox.orderButton.body} ${totalPrice}`}
+        buttonColorType="success"
       />
     </div>
   );

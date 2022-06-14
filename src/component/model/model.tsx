@@ -2,6 +2,7 @@ import Box from "@mui/material/Box";
 import Typography from "@mui/material/Typography";
 import Modal from "@mui/material/Modal";
 import { AiFillCloseSquare } from "react-icons/ai";
+import { Button } from "@mui/material";
 import "./model.css";
 
 // reference https://stackoverflow.com/a/7224605/15350391
@@ -12,11 +13,13 @@ export const ModelComponent = ({
   changeModelStatus,
   burgerOption,
   totalPrice,
+  setAlertForConfirmation,
 }: {
   modelStatus: boolean;
   changeModelStatus: Function;
   burgerOption: any;
   totalPrice: string;
+  setAlertForConfirmation?: Function;
 }) => {
   return (
     <div>
@@ -54,6 +57,22 @@ export const ModelComponent = ({
                 </strong>
               </li>
             </ul>
+            {setAlertForConfirmation && (
+              <Box
+                mt={2}
+                display="flex"
+                alignItems="center"
+                justifyContent="center"
+              >
+                <Button
+                  variant="contained"
+                  color="success"
+                  onClick={() => setAlertForConfirmation!(true)}
+                >
+                  confirm order
+                </Button>
+              </Box>
+            )}
           </div>
         </Box>
       </Modal>
