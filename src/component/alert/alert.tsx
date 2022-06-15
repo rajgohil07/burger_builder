@@ -1,4 +1,4 @@
-import { Snackbar, Alert } from "@mui/material";
+import { Snackbar, Alert, Box } from "@mui/material";
 import {
   defaultAlertText,
   defaultAlertTiming,
@@ -26,19 +26,21 @@ export const AlertComponent = ({
         onClose={() => {}}
         transitionDuration={timing / 8}
       >
-        <Alert
-          style={{
-            backgroundColor: isSuccess ? "rgb(78,154,81)" : "rgb(211,47,47)",
-          }}
-          variant="filled"
-          onClose={() => {
-            setAlert(false);
-          }}
-          severity={isSuccess ? "success" : "error"}
-          sx={{ width: "100%" }}
-        >
-          {alertText}
-        </Alert>
+        <Box mt={5} mr={3}>
+          <Alert
+            style={{
+              backgroundColor: isSuccess ? "rgb(78,154,81)" : "rgb(211,47,47)",
+            }}
+            variant="filled"
+            onClose={() => {
+              setAlert(false);
+            }}
+            severity={isSuccess ? "success" : "error"}
+            sx={{ width: "100%" }}
+          >
+            {alertText}
+          </Alert>
+        </Box>
       </Snackbar>
     </>
   );
