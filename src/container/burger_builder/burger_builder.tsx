@@ -9,6 +9,7 @@ import {
   BurgerIngredientTypeEnum,
   IBurgerIngredientType,
 } from "../../types/burger_ingredient_types";
+import "./burger_builder.css";
 
 export const BurgerBuilder = () => {
   // set burger option state
@@ -96,7 +97,7 @@ export const BurgerBuilder = () => {
   }, [getCheese, getSalad, getBacon, getMeat]);
 
   return (
-    <>
+    <div className="burger">
       <Burger burgerOption={burgerOption} />
       <BurgerControllers
         buttonClickEvent={updateIngredients}
@@ -106,6 +107,6 @@ export const BurgerBuilder = () => {
         isClearAllDisabled={isDisabledClearAllButton}
         burgerOption={burgerOption}
       />
-    </>
+    </div>
   );
 };
