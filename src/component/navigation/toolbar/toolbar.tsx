@@ -9,9 +9,12 @@ export const ToolbarComponent = ({
 }) => (
   <header className="Toolbar">
     <div
+      className="DrawerToggle"
       onClick={() => (window.innerWidth <= 500 ? toggleFunction(true) : null)}
     >
-      Menu
+      <div></div>
+      <div></div>
+      <div></div>
     </div>
     <Logo isMobileDevice={false} />
     <nav className="disableNavigationForMobile">
