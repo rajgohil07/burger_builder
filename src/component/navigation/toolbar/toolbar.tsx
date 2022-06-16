@@ -5,8 +5,8 @@ import "./toolbar.css";
 export const ToolbarComponent = () => (
   <header className="Toolbar">
     <div>Menu</div>
-    <Logo />
-    <nav>
+    <Logo isMobileDevice={false} />
+    <nav className="disableNavigationForMobile">
       <NavigationLinks />
     </nav>
   </header>
