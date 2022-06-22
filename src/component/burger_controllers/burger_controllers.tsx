@@ -7,8 +7,8 @@ import { defaultAlertTiming, message } from "../../constants/constants";
 import { Box, Button } from "@mui/material";
 import { ModelComponent } from "../model/model";
 import { IBurgerOptionType } from "../../types/burger_option_types";
-import "./burger_controllers.css";
 import { AlertComponent } from "../alert/alert";
+import "./burger_controllers.css";
 
 export const BurgerControllers = ({
   buttonClickEvent,

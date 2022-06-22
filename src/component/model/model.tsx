@@ -98,6 +98,8 @@ export const ModelComponent = ({
                   denyMessageButtonString={"No i want to add more ingredients"}
                   changeModelStatus={changeModelStatus}
                   changeOrderConfirmSuccess={changeOrderConfirmSuccess}
+                  totalPrice={totalPrice}
+                  burgerOption={burgerOption}
                 />
               </Box>
             )}
