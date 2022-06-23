@@ -17,6 +17,7 @@ export const BurgerControllers = ({
   clearAll,
   isClearAllDisabled,
   burgerOption,
+  setDisplayLoading,
 }: {
   buttonClickEvent: Function;
   disabledButtonArrayList: IBurgerIngredientType[];
@@ -24,6 +25,7 @@ export const BurgerControllers = ({
   clearAll: Function;
   isClearAllDisabled: boolean;
   burgerOption: IBurgerOptionType;
+  setDisplayLoading: Function;
 }) => {
   // state to clear all button
   const [getDisplayAlert, setDisplaySummary] = useState(false);
@@ -66,6 +68,7 @@ export const BurgerControllers = ({
           body={dialogBox.clearAllButton.body}
           buttonColorType="error"
           IsForConfirmation={false}
+          setDisplayLoading={setDisplayLoading}
         />
       </div>
       {ingredientArray.map((singleIngredient) => (
@@ -98,6 +101,7 @@ export const BurgerControllers = ({
         isClearAllDisabled={isClearAllDisabled}
         successFn={clearAll}
         changeOrderConfirmSuccess={changeOrderConfirmSuccess}
+        setDisplayLoading={setDisplayLoading}
       />
       <AlertComponent
         isOpen={getDisplayOrderAlert}

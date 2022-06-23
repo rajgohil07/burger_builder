@@ -10,6 +10,7 @@ import {
   IBurgerIngredientType,
 } from "../../types/burger_ingredient_types";
 import "./burger_builder.css";
+import { LoadingComponent } from "../../component/loading/loading";
 
 export const BurgerBuilder = () => {
   // set burger option state
@@ -23,6 +24,8 @@ export const BurgerBuilder = () => {
   >([]);
   const [isDisabledClearAllButton, setIsDisabledClearAllButton] =
     useState(true);
+
+  const [displayLoading, setDisplayLoading] = useState(false);
 
   const burgerOption: IBurgerOptionType = {
     cheese: getCheese,
@@ -97,16 +100,20 @@ export const BurgerBuilder = () => {
   }, [getCheese, getSalad, getBacon, getMeat]);
 
   return (
-    <div className="burger">
-      <Burger burgerOption={burgerOption} />
-      <BurgerControllers
-        buttonClickEvent={updateIngredients}
-        disabledButtonArrayList={getDisableIngredientTypes}
-        price={getPrice}
-        clearAll={clearAllEvent}
-        isClearAllDisabled={isDisabledClearAllButton}
-        burgerOption={burgerOption}
-      />
-    </div>
+    <>
+      <LoadingComponent IsActive={displayLoading} />
+      <div className="burger">
+        <Burger burgerOption={burgerOption} />
+        <BurgerControllers
+          buttonClickEvent={updateIngredients}
+          disabledButtonArrayList={getDisableIngredientTypes}
+          price={getPrice}
+          clearAll={clearAllEvent}
+          isClearAllDisabled={isDisabledClearAllButton}
+          burgerOption={burgerOption}
+          setDisplayLoading={setDisplayLoading}
+        />
+      </div>
+    </>
   );
 };

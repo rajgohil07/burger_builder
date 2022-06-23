@@ -1,5 +1,5 @@
 /* eslint-disable @typescript-eslint/no-unused-expressions */
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import Button from "@mui/material/Button";
 import Dialog from "@mui/material/Dialog";
 import DialogActions from "@mui/material/DialogActions";
@@ -10,7 +10,6 @@ import { AlertComponent } from "../alert/alert";
 import { IButtonType } from "../../types/button_type";
 import { AxiosRequestConfig, AxiosResponse } from "axios";
 import { orderAxios } from "../../axios-instants";
-import { Backdrop, CircularProgress } from "@mui/material";
 
 export const DialogBox = ({
   name,
@@ -33,6 +32,7 @@ export const DialogBox = ({
   changeOrderConfirmSuccess,
   totalPrice,
   burgerOption,
+  setDisplayLoading,
 }: {
   name: string;
   successFn: Function;
@@ -54,11 +54,11 @@ export const DialogBox = ({
   changeOrderConfirmSuccess?: Function;
   burgerOption?: any;
   totalPrice?: number | string;
+  setDisplayLoading: Function;
 }) => {
   const [open, setOpen] = useState(false);
   const handleClickOpen = () => setOpen(true);
   const handleClose = () => setOpen(false);
-  const [displayBackdrop, setDisplayBackdrop] = useState(false);
 
   const createOrder = async (price: number | string, ingredients: any) => {
     try {
@@ -72,24 +72,14 @@ export const DialogBox = ({
         },
       };
       const response: AxiosResponse = await orderAxios(config);
-      // console.log("response", response);
       return response;
     } catch (e) {
       throw e;
     }
   };
 
-  useEffect(() => console.log("changed", displayBackdrop), [displayBackdrop]);
-
   return (
     <div>
-      <Backdrop
-        sx={{ color: "#fff", zIndex: 9999 }}
-        open={displayBackdrop}
-        onClick={() => {}}
-      >
-        <CircularProgress size={90} thickness={5} color="success" />
-      </Backdrop>
       {isAlert && (
         <AlertComponent
           isOpen={getDisplayAlert}
@@ -129,8 +119,7 @@ export const DialogBox = ({
             variant="contained"
             color="error"
             onClick={async () => {
-              setDisplayBackdrop(true);
-              console.log("setDisplayBackdrop 123", displayBackdrop);
+              setDisplayLoading(true);
               clearAll();
               handleClose();
               IsForConfirmation && confirmationFunction && changeModelStatus
@@ -142,8 +131,7 @@ export const DialogBox = ({
               changeOrderConfirmSuccess
                 ? changeOrderConfirmSuccess(true)
                 : null;
-              setDisplayBackdrop(false);
-              console.log("setDisplayBackdrop 123", displayBackdrop);
+              setDisplayLoading(false);
             }}
           >
             {successMessageButtonString

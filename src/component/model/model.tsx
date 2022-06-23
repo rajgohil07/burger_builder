@@ -24,6 +24,7 @@ export const ModelComponent = ({
   isClearAllDisabled,
   successFn,
   changeOrderConfirmSuccess,
+  setDisplayLoading,
 }: {
   modelStatus: boolean;
   changeModelStatus: Function;
@@ -35,6 +36,7 @@ export const ModelComponent = ({
   isClearAllDisabled: boolean;
   successFn: Function;
   changeOrderConfirmSuccess?: Function;
+  setDisplayLoading: Function;
 }) => {
   return (
     <div>
@@ -100,6 +102,7 @@ export const ModelComponent = ({
                   changeOrderConfirmSuccess={changeOrderConfirmSuccess}
                   totalPrice={totalPrice}
                   burgerOption={burgerOption}
+                  setDisplayLoading={setDisplayLoading}
                 />
               </Box>
             )}
