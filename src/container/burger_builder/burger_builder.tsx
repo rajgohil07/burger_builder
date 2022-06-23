@@ -5,14 +5,14 @@ import { BurgerControllers } from "../../component/burger_controllers/burger_con
 import { IAddOrRemoveIngredientType } from "../../types/add_or_remove_ingredient_type";
 import { IBurgerOptionType } from "../../types/burger_option_types";
 import { defaultIngredientsPrice } from "../../constants/constants";
+import { LoadingComponent } from "../../component/loading/loading";
+import { AxiosRequestConfig, AxiosResponse } from "axios";
+import { orderAxios } from "../../axios-instants";
 import {
   BurgerIngredientTypeEnum,
   IBurgerIngredientType,
 } from "../../types/burger_ingredient_types";
 import "./burger_builder.css";
-import { LoadingComponent } from "../../component/loading/loading";
-import { AxiosRequestConfig, AxiosResponse } from "axios";
-import { orderAxios } from "../../axios-instants";
 
 export const BurgerBuilder = () => {
   // set burger option state
@@ -27,7 +27,7 @@ export const BurgerBuilder = () => {
   const [isDisabledClearAllButton, setIsDisabledClearAllButton] =
     useState(true);
 
-  const [displayLoading, setDisplayLoading] = useState(false);
+  const [displayLoading, setDisplayLoading] = useState(true);
 
   const burgerOption: IBurgerOptionType = {
     cheese: getCheese,
@@ -135,6 +135,7 @@ export const BurgerBuilder = () => {
   // fetch ingredients from the server side
   useEffect(() => {
     (async () => await fetchIngredientsFromTheServer())();
+    setTimeout(() => setDisplayLoading(false), 1100);
   }, []);
 
   return (
