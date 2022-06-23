@@ -4,14 +4,19 @@ import { Burger } from "../../component/burger/burger";
 import { BurgerControllers } from "../../component/burger_controllers/burger_controllers";
 import { IAddOrRemoveIngredientType } from "../../types/add_or_remove_ingredient_type";
 import { IBurgerOptionType } from "../../types/burger_option_types";
-import { defaultIngredientsPrice } from "../../constants/constants";
 import { LoadingComponent } from "../../component/loading/loading";
 import { AxiosRequestConfig, AxiosResponse } from "axios";
 import { orderAxios } from "../../axios-instants";
+import { AlertComponent } from "../../component/alert/alert";
 import {
   BurgerIngredientTypeEnum,
   IBurgerIngredientType,
 } from "../../types/burger_ingredient_types";
+import {
+  defaultAlertTiming,
+  defaultIngredientsPrice,
+  message,
+} from "../../constants/constants";
 import "./burger_builder.css";
 
 export const BurgerBuilder = () => {
@@ -28,6 +33,8 @@ export const BurgerBuilder = () => {
     useState(true);
 
   const [displayLoading, setDisplayLoading] = useState(true);
+
+  const [hasIngredientFetched, setHasIngredientFetched] = useState(false);
 
   const burgerOption: IBurgerOptionType = {
     cheese: getCheese,
@@ -126,8 +133,11 @@ export const BurgerBuilder = () => {
         }
         return true;
       });
+      setHasIngredientFetched(false);
       return response;
     } catch (e) {
+      setDisplayLoading(false);
+      setHasIngredientFetched(true);
       console.log(e);
     }
   };
@@ -140,6 +150,13 @@ export const BurgerBuilder = () => {
 
   return (
     <>
+      <AlertComponent
+        isOpen={hasIngredientFetched}
+        alertText={message.fetchIngredientsError}
+        timing={defaultAlertTiming}
+        isSuccess={false}
+        setAlert={setHasIngredientFetched}
+      />
       <LoadingComponent IsActive={displayLoading} />
       <div className="burger">
         <Burger burgerOption={burgerOption} />

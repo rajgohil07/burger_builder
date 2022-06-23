@@ -22,6 +22,7 @@ export const defaultAlertTiming: number = 5000;
 export const message: { [key: string]: string } = {
   burgerIngredientsResetMessage: "All burger ingredients has ben reset!",
   orderConfirm: "Congratulations! Your burger order has been placed!",
+  fetchIngredientsError: "Can't fetch ingredients info",
 };
 
 export const dialogBox: IDialogBox = {
