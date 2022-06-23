@@ -25,6 +25,8 @@ export const ModelComponent = ({
   successFn,
   changeOrderConfirmSuccess,
   setDisplayLoading,
+  setOrderErrorMessage,
+  setSuccessConfirmOrder,
 }: {
   modelStatus: boolean;
   changeModelStatus: Function;
@@ -37,6 +39,8 @@ export const ModelComponent = ({
   successFn: Function;
   changeOrderConfirmSuccess?: Function;
   setDisplayLoading: Function;
+  setOrderErrorMessage?: Function;
+  setSuccessConfirmOrder?: Function;
 }) => {
   return (
     <div>
@@ -103,6 +107,8 @@ export const ModelComponent = ({
                   totalPrice={totalPrice}
                   burgerOption={burgerOption}
                   setDisplayLoading={setDisplayLoading}
+                  setOrderErrorMessage={setOrderErrorMessage}
+                  setSuccessConfirmOrder={setSuccessConfirmOrder}
                 />
               </Box>
             )}

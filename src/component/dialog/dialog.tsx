@@ -33,6 +33,8 @@ export const DialogBox = ({
   totalPrice,
   burgerOption,
   setDisplayLoading,
+  setOrderErrorMessage,
+  setSuccessConfirmOrder,
 }: {
   name: string;
   successFn: Function;
@@ -55,6 +57,8 @@ export const DialogBox = ({
   burgerOption?: any;
   totalPrice?: number | string;
   setDisplayLoading: Function;
+  setOrderErrorMessage?: Function;
+  setSuccessConfirmOrder?: Function;
 }) => {
   const [open, setOpen] = useState(false);
   const handleClickOpen = () => setOpen(true);
@@ -74,7 +78,8 @@ export const DialogBox = ({
       const response: AxiosResponse = await orderAxios(config);
       return response;
     } catch (e) {
-      throw e;
+      setOrderErrorMessage(e.message);
+      setSuccessConfirmOrder(false);
     }
   };
 

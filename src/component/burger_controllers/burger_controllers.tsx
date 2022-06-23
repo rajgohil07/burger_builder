@@ -42,6 +42,12 @@ export const BurgerControllers = ({
   // success message for
   const [getDisplayOrderAlert, setDisplayOrderAlert] = useState(false);
 
+  // failed to save response on create order
+  const [isConfirmOrderSuccess, setSuccessConfirmOrder] = useState(true);
+
+  // store error message from axios
+  const [orderErrorMessage, setOrderErrorMessage] = useState("");
+
   // change the order success alert
   const changeOrderConfirmSuccess = (status: boolean) =>
     setDisplayOrderAlert(status);
@@ -102,12 +108,14 @@ export const BurgerControllers = ({
         successFn={clearAll}
         changeOrderConfirmSuccess={changeOrderConfirmSuccess}
         setDisplayLoading={setDisplayLoading}
+        setOrderErrorMessage={setOrderErrorMessage}
+        setSuccessConfirmOrder={setSuccessConfirmOrder}
       />
       <AlertComponent
         isOpen={getDisplayOrderAlert}
-        alertText={message.orderConfirm}
+        alertText={orderErrorMessage ? orderErrorMessage : message.orderConfirm}
         timing={defaultAlertTiming}
-        isSuccess={true}
+        isSuccess={isConfirmOrderSuccess}
         setAlert={changeOrderConfirmSuccess}
       />
     </div>
