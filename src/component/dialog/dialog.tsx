@@ -76,6 +76,8 @@ export const DialogBox = ({
         },
       };
       const response: AxiosResponse = await orderAxios(config);
+      setOrderErrorMessage!("");
+      setSuccessConfirmOrder!(true);
       return response;
     } catch (e: any) {
       setOrderErrorMessage!(e.message);
