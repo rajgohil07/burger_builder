@@ -11,6 +11,8 @@ import {
 } from "../../types/burger_ingredient_types";
 import "./burger_builder.css";
 import { LoadingComponent } from "../../component/loading/loading";
+import { AxiosRequestConfig, AxiosResponse } from "axios";
+import { orderAxios } from "../../axios-instants";
 
 export const BurgerBuilder = () => {
   // set burger option state
@@ -99,6 +101,20 @@ export const BurgerBuilder = () => {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [getCheese, getSalad, getBacon, getMeat]);
 
+  const fetchIngredientsFromTheServer = async () => {
+    try {
+      const config: AxiosRequestConfig = {
+        method: "GET",
+        url: "/ingredients.json",
+      };
+      const response: AxiosResponse = await orderAxios(config);
+      console.log("response", response);
+      return response;
+    } catch (e) {
+      console.log(e);
+    }
+  };
+  fetchIngredientsFromTheServer();
   return (
     <>
       <LoadingComponent IsActive={displayLoading} />
