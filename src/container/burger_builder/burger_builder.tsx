@@ -108,13 +108,35 @@ export const BurgerBuilder = () => {
         url: "/ingredients.json",
       };
       const response: AxiosResponse = await orderAxios(config);
-      console.log("response", response);
+      const { data } = response;
+      Object.keys(data).map((ingredientName: any) => {
+        switch (ingredientName) {
+          case "salad":
+            setSalad(data[ingredientName]);
+            break;
+          case "meat":
+            setMeat(data[ingredientName]);
+            break;
+          case "bacon":
+            setBacon(data[ingredientName]);
+            break;
+          case "cheese":
+            setCheese(data[ingredientName]);
+            break;
+        }
+        return true;
+      });
       return response;
     } catch (e) {
       console.log(e);
     }
   };
-  fetchIngredientsFromTheServer();
+
+  // fetch ingredients from the server side
+  useEffect(() => {
+    (async () => await fetchIngredientsFromTheServer())();
+  }, []);
+
   return (
     <>
       <LoadingComponent IsActive={displayLoading} />
