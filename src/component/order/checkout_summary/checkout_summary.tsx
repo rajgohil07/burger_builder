@@ -1,5 +1,6 @@
-import { Button } from "@mui/material";
+import { Button, Divider, Stack } from "@mui/material";
 import { Burger } from "../../burger/burger";
+import "./checkout_summary.css";
 
 export const CheckoutSummary = ({ burgerOption }: { burgerOption: any }) => (
   <div className="checkoutSummaryOuterDiv">
@@ -7,19 +8,27 @@ export const CheckoutSummary = ({ burgerOption }: { burgerOption: any }) => (
     <div className="checkoutSummary">
       <Burger burgerOption={burgerOption} />
     </div>
-    <Button
-      style={{ textTransform: "uppercase" }}
-      variant="contained"
-      color="success"
+    <Stack
+      direction="row"
+      divider={<Divider orientation="vertical" flexItem />}
+      justifyContent="center"
+      alignItems="center"
+      spacing={5}
     >
-      Continue
-    </Button>
-    <Button
-      style={{ textTransform: "uppercase" }}
-      variant="contained"
-      color="error"
-    >
-      Cancel
-    </Button>
+      <Button
+        style={{ textTransform: "uppercase" }}
+        variant="contained"
+        color="error"
+      >
+        Cancel
+      </Button>
+      <Button
+        style={{ textTransform: "uppercase" }}
+        variant="contained"
+        color="success"
+      >
+        Continue
+      </Button>
+    </Stack>
   </div>
 );
