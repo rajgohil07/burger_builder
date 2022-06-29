@@ -134,7 +134,7 @@ export const DialogBox = ({
                 : setAlert(true);
               totalPrice && burgerOption
                 ? await createOrder(totalPrice, burgerOption)
-                : console.log("not working");
+                : null;
               changeOrderConfirmSuccess
                 ? changeOrderConfirmSuccess(true)
                 : null;
