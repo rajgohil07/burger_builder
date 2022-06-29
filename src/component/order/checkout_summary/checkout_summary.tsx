@@ -16,7 +16,7 @@ export const CheckoutSummary = ({ burgerOption }: { burgerOption: any }) => (
     </Button>
     <Button
       style={{ textTransform: "uppercase" }}
-      variant="outlined"
+      variant="contained"
       color="error"
     >
       Cancel
