@@ -1,0 +1,16 @@
+.checkoutSummaryOuterDiv {
+    text-align: center;
+    width: 80%;
+    margin: auto;
+}
+
+.checkoutSummary {
+    width: 100%;
+    margin: auto;
+}
+
+@media(min-width:600px) {
+    .checkoutSummaryOuterDiv {
+        width: 500px;
+    }
+}
