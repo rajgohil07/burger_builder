@@ -23,10 +23,6 @@ export const ModelComponent = ({
   getDisplayAlert,
   isClearAllDisabled,
   successFn,
-  changeOrderConfirmSuccess,
-  setDisplayLoading,
-  setOrderErrorMessage,
-  setSuccessConfirmOrder,
 }: {
   modelStatus: boolean;
   changeModelStatus: Function;
@@ -37,10 +33,6 @@ export const ModelComponent = ({
   getDisplayAlert: boolean;
   isClearAllDisabled: boolean;
   successFn: Function;
-  changeOrderConfirmSuccess?: Function;
-  setDisplayLoading: Function;
-  setOrderErrorMessage?: Function;
-  setSuccessConfirmOrder?: Function;
 }) => {
   return (
     <div>
@@ -103,12 +95,8 @@ export const ModelComponent = ({
                   successMessageButtonString={"Yes i want to purchase"}
                   denyMessageButtonString={"No i want to add more ingredients"}
                   changeModelStatus={changeModelStatus}
-                  changeOrderConfirmSuccess={changeOrderConfirmSuccess}
                   totalPrice={totalPrice}
                   burgerOption={burgerOption}
-                  setDisplayLoading={setDisplayLoading}
-                  setOrderErrorMessage={setOrderErrorMessage}
-                  setSuccessConfirmOrder={setSuccessConfirmOrder}
                 />
               </Box>
             )}

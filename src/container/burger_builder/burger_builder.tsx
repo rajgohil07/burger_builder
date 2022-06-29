@@ -167,7 +167,6 @@ export const BurgerBuilder = () => {
           clearAll={clearAllEvent}
           isClearAllDisabled={isDisabledClearAllButton}
           burgerOption={burgerOption}
-          setDisplayLoading={setDisplayLoading}
         />
       </div>
     </>

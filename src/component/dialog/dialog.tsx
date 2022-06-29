@@ -8,8 +8,7 @@ import DialogContentText from "@mui/material/DialogContentText";
 import DialogTitle from "@mui/material/DialogTitle";
 import { AlertComponent } from "../alert/alert";
 import { IButtonType } from "../../types/button_type";
-import { AxiosRequestConfig, AxiosResponse } from "axios";
-import { orderAxios } from "../../axios-instants";
+import { useNavigate } from "react-router-dom";
 
 export const DialogBox = ({
   name,
@@ -29,12 +28,8 @@ export const DialogBox = ({
   successMessageButtonString,
   denyMessageButtonString,
   changeModelStatus,
-  changeOrderConfirmSuccess,
   totalPrice,
   burgerOption,
-  setDisplayLoading,
-  setOrderErrorMessage,
-  setSuccessConfirmOrder,
 }: {
   name: string;
   successFn: Function;
@@ -53,35 +48,33 @@ export const DialogBox = ({
   successMessageButtonString?: string;
   denyMessageButtonString?: string;
   changeModelStatus?: Function;
-  changeOrderConfirmSuccess?: Function;
   burgerOption?: any;
   totalPrice?: number | string;
-  setDisplayLoading: Function;
-  setOrderErrorMessage?: Function;
-  setSuccessConfirmOrder?: Function;
 }) => {
   const [open, setOpen] = useState(false);
   const handleClickOpen = () => setOpen(true);
   const handleClose = () => setOpen(false);
+  const navigation = useNavigate();
 
   const createOrder = async (price: number | string, ingredients: any) => {
     try {
-      const config: AxiosRequestConfig = {
-        url: "/order.json",
-        method: "POST",
-        data: {
-          Name: "Raj gohil",
-          Price: price,
-          Ingredients: ingredients,
-        },
-      };
-      const response: AxiosResponse = await orderAxios(config);
-      setOrderErrorMessage!("");
-      setSuccessConfirmOrder!(true);
-      return response;
+      // const config: AxiosRequestConfig = {
+      //   url: "/order.json",
+      //   method: "POST",
+      //   data: {
+      //     Name: "Raj gohil",
+      //     Price: price,
+      //     Ingredients: ingredients,
+      //   },
+      // };
+      // const response: AxiosResponse = await orderAxios(config);
+      // setOrderErrorMessage!("");
+      // setSuccessConfirmOrder!(true);
+      navigation("/checkout", { replace: true });
+      // return response;
     } catch (e: any) {
-      setOrderErrorMessage!(e.message);
-      setSuccessConfirmOrder!(false);
+      // setOrderErrorMessage!(e.message);
+      // setSuccessConfirmOrder!(false);
     }
   };
 
@@ -126,7 +119,7 @@ export const DialogBox = ({
             variant="contained"
             color="error"
             onClick={async () => {
-              setDisplayLoading(true);
+              // setDisplayLoading(true);
               clearAll();
               handleClose();
               IsForConfirmation && confirmationFunction && changeModelStatus
@@ -135,10 +128,7 @@ export const DialogBox = ({
               totalPrice && burgerOption
                 ? await createOrder(totalPrice, burgerOption)
                 : null;
-              changeOrderConfirmSuccess
-                ? changeOrderConfirmSuccess(true)
-                : null;
-              setDisplayLoading(false);
+              // setDisplayLoading(false);
             }}
           >
             {successMessageButtonString

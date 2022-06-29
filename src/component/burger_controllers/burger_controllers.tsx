@@ -7,7 +7,6 @@ import { defaultAlertTiming, message } from "../../constants/constants";
 import { Box, Button } from "@mui/material";
 import { ModelComponent } from "../model/model";
 import { IBurgerOptionType } from "../../types/burger_option_types";
-import { AlertComponent } from "../alert/alert";
 import "./burger_controllers.css";
 
 export const BurgerControllers = ({
@@ -17,7 +16,6 @@ export const BurgerControllers = ({
   clearAll,
   isClearAllDisabled,
   burgerOption,
-  setDisplayLoading,
 }: {
   buttonClickEvent: Function;
   disabledButtonArrayList: IBurgerIngredientType[];
@@ -25,7 +23,6 @@ export const BurgerControllers = ({
   clearAll: Function;
   isClearAllDisabled: boolean;
   burgerOption: IBurgerOptionType;
-  setDisplayLoading: Function;
 }) => {
   // state to clear all button
   const [getDisplayAlert, setDisplaySummary] = useState(false);
@@ -49,8 +46,8 @@ export const BurgerControllers = ({
   const [orderErrorMessage, setOrderErrorMessage] = useState("");
 
   // change the order success alert
-  const changeOrderConfirmSuccess = (status: boolean) =>
-    setDisplayOrderAlert(status);
+  // const changeOrderConfirmSuccess = (status: boolean) =>
+  //   setDisplayOrderAlert(status);
 
   const totalPrice = `${price.toFixed(2)} $`;
 
@@ -74,7 +71,6 @@ export const BurgerControllers = ({
           body={dialogBox.clearAllButton.body}
           buttonColorType="error"
           IsForConfirmation={false}
-          setDisplayLoading={setDisplayLoading}
         />
       </div>
       {ingredientArray.map((singleIngredient) => (
@@ -106,18 +102,13 @@ export const BurgerControllers = ({
         getDisplayAlert={getOrder}
         isClearAllDisabled={isClearAllDisabled}
         successFn={clearAll}
-        changeOrderConfirmSuccess={changeOrderConfirmSuccess}
-        setDisplayLoading={setDisplayLoading}
-        setOrderErrorMessage={setOrderErrorMessage}
-        setSuccessConfirmOrder={setSuccessConfirmOrder}
       />
-      <AlertComponent
+      {/* <AlertComponent
         isOpen={getDisplayOrderAlert}
         alertText={orderErrorMessage ? orderErrorMessage : message.orderConfirm}
         timing={defaultAlertTiming}
         isSuccess={isConfirmOrderSuccess}
-        setAlert={changeOrderConfirmSuccess}
-      />
+      /> */}
     </div>
   );
 };
